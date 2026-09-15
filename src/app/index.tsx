@@ -1,98 +1,175 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { COLORS, FONTS } from '../theme/colors';
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+const AVATARS = [
+  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&auto=format&fit=crop&q=80',
+];
 
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+export default function WelcomeScreen() {
+  const router = useRouter();
+  const insets = useSafeAreaInsets();
+
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
+    <LinearGradient
+      colors={COLORS.welcomeGradient}
+      start={{ x: 0.5, y: 0 }}
+      end={{ x: 0.5, y: 1 }}
+      className="flex-1"
+    >
+      <View
+        className="flex-1 px-6 justify-between"
+        style={{
+          paddingTop: Math.max(insets.top, 24) + 16,
+          paddingBottom: Math.max(insets.bottom, 20) + 12,
+        }}
+      >
+        {/* Top Header: White squircle icon box + CollabX brand text */}
+        <View className="flex-row items-center">
+          <View className="w-[50px] h-[50px] rounded-[18px] bg-white items-center justify-center shadow-sm">
+            <Ionicons name="school" size={26} color={COLORS.primaryDark} />
+          </View>
+          <Text
+            className="text-[26px] font-bold text-white ml-3.5 tracking-tight"
+            style={{ fontFamily: FONTS.bold }}
+          >
+            CollabX
+          </Text>
+        </View>
+
+        {/* Middle Content Section */}
+        <View className="py-2.5">
+          {/* Display Headline */}
+          <View className="mb-4">
+            <Text
+              className="text-[56px] font-extrabold text-white leading-[60px] tracking-tighter"
+              style={{ fontFamily: FONTS.bold }}
+            >
+              Unlock
+            </Text>
+            <Text
+              className="text-[56px] font-extrabold text-white leading-[60px] tracking-tighter"
+              style={{ fontFamily: FONTS.bold }}
+            >
+              Your
+            </Text>
+            <Text
+              className="text-[56px] font-extrabold text-[#86BB71] leading-[60px] tracking-tighter italic"
+              style={{ fontFamily: FONTS.boldItalic }}
+            >
+              Global
+            </Text>
+            <Text
+              className="text-[56px] font-extrabold text-[#86BB71] leading-[60px] tracking-tighter italic"
+              style={{ fontFamily: FONTS.boldItalic }}
+            >
+              Future
+            </Text>
+          </View>
+
+          {/* Subtitle */}
+          <Text
+            className="text-base text-[#A3BEA1] leading-6 mb-6 max-w-[94%]"
+            style={{ fontFamily: FONTS.regular }}
+          >
+            Personalized scholarship matching for every ambitious student.
+          </Text>
+
+          {/* Social Proof */}
+          <View className="flex-row items-center gap-3.5">
+            <View className="flex-row items-center">
+              {AVATARS.map((uri, index) => (
+                <Image
+                  key={index}
+                  source={{ uri }}
+                  className="w-9 h-9 rounded-full border-2 border-[#153018]"
+                  style={{
+                    marginLeft: index === 0 ? 0 : -10,
+                    zIndex: 10 - index,
+                  }}
+                />
+              ))}
+              <View
+                className="w-9 h-9 rounded-full bg-[#A9C6A2] items-center justify-center border-2 border-[#153018] -ml-2.5"
+                style={{ zIndex: 5 }}
+              >
+                <Text
+                  className="text-[11px] font-bold text-[#153018]"
+                  style={{ fontFamily: FONTS.bold }}
+                >
+                  10k+
+                </Text>
+              </View>
+            </View>
+
+            <View className="justify-center">
+              <Text
+                className="text-[11px] font-bold text-[#8EA88C] tracking-widest uppercase"
+                style={{ fontFamily: FONTS.bold }}
+              >
+                TRUSTED BY STUDENTS
+              </Text>
+              <Text
+                className="text-[11px] font-bold text-[#8EA88C] tracking-widest uppercase"
+                style={{ fontFamily: FONTS.bold }}
+              >
+                WORLDWIDE
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Bottom Actions & Terms */}
+        <View className="gap-3">
+          <TouchableOpacity
+            className="bg-white h-14 rounded-full items-center justify-center active:opacity-90 shadow-sm"
+            activeOpacity={0.88}
+            onPress={() => router.push('/home/homescreen')}
+            accessibilityRole="button"
+            accessibilityLabel="Get Started"
+          >
+            <Text
+              className="text-sm font-bold text-[#153018] tracking-wider"
+              style={{ fontFamily: FONTS.bold }}
+            >
+              GET STARTED
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            className="h-14 rounded-full border border-white/20 bg-white/[0.03] items-center justify-center active:opacity-80"
+            activeOpacity={0.8}
+            onPress={() => router.push('/home/homescreen')}
+            accessibilityRole="button"
+            accessibilityLabel="Sign In"
+          >
+            <Text
+              className="text-sm font-bold text-white tracking-wider"
+              style={{ fontFamily: FONTS.bold }}
+            >
+              SIGN IN
+            </Text>
+          </TouchableOpacity>
+
+          <Text
+            className="text-[10px] font-semibold text-[#5F7E5C] tracking-wider text-center mt-1.5 uppercase"
+            style={{ fontFamily: FONTS.medium }}
+          >
+            BY CONTINUING YOU AGREE TO OUR TERMS OF SERVICE
+          </Text>
+        </View>
+      </View>
+    </LinearGradient>
   );
 }
-
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
-  },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
-  },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
-  },
-});
