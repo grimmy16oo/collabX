@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Platform } from 'react-native';
+import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../theme/colors';
 
@@ -14,12 +15,19 @@ export const FloatingBottomNav: React.FC<FloatingBottomNavProps> = ({
   currentTab = 'home',
   onSelectTab,
 }) => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabKey>(currentTab);
 
   const handlePress = (tab: TabKey) => {
     setActiveTab(tab);
     if (onSelectTab) {
       onSelectTab(tab);
+    } else {
+      if (tab === 'home' && currentTab !== 'home') {
+        router.push('/home');
+      } else if (tab === 'search' && currentTab !== 'search') {
+        router.push('/scholarships');
+      }
     }
   };
 
@@ -33,6 +41,8 @@ export const FloatingBottomNav: React.FC<FloatingBottomNavProps> = ({
     { key: 'grid', icon: 'grid-outline', size: 21 },
     { key: 'profile', icon: 'person-outline', size: 22 },
   ];
+
+  const effectiveActive = currentTab || activeTab;
 
   return (
     <View
@@ -53,7 +63,7 @@ export const FloatingBottomNav: React.FC<FloatingBottomNavProps> = ({
         }}
       >
         {navItems.map((item) => {
-          const isActive = activeTab === item.key;
+          const isActive = effectiveActive === item.key;
           return (
             <TouchableOpacity
               key={item.key}

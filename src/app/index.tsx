@@ -4,6 +4,8 @@ import {
   Text,
   TouchableOpacity,
   Image,
+  ScrollView,
+  useWindowDimensions,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
@@ -20,6 +22,10 @@ const AVATARS = [
 export default function WelcomeScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const { height, width } = useWindowDimensions();
+  const isCompact = height < 720 || width < 375;
+  const headingSize = isCompact ? 42 : 52;
+  const headingLineHeight = isCompact ? 46 : 56;
 
   return (
     <LinearGradient
@@ -28,13 +34,20 @@ export default function WelcomeScreen() {
       end={{ x: 0.5, y: 1 }}
       className="flex-1"
     >
-      <View
-        className="flex-1 px-6 justify-between"
-        style={{
-          paddingTop: Math.max(insets.top, 24) + 16,
-          paddingBottom: Math.max(insets.bottom, 20) + 12,
+      <ScrollView
+        bounces={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          flexGrow: 1,
+          minHeight: height,
+          paddingTop: Math.max(insets.top, 20) + (isCompact ? 12 : 18),
+          paddingBottom: Math.max(insets.bottom, 16) + 16,
         }}
       >
+        <View
+          className="flex-1 w-full self-center"
+          style={{ maxWidth: 560, paddingHorizontal: width < 375 ? 20 : 24 }}
+        >
         {/* Top Header: White squircle icon box + CollabX brand text */}
         <View className="flex-row items-center">
           <View className="w-[50px] h-[50px] rounded-[18px] bg-white items-center justify-center shadow-sm">
@@ -49,30 +62,30 @@ export default function WelcomeScreen() {
         </View>
 
         {/* Middle Content Section */}
-        <View className="py-2.5">
+        <View style={{ marginTop: isCompact ? 32 : 56 }}>
           {/* Display Headline */}
-          <View className="mb-4">
+          <View className="mb-4 gap-5">
             <Text
-              className="text-[56px] font-extrabold text-white leading-[60px] tracking-tighter"
-              style={{ fontFamily: FONTS.bold }}
+              className="font-extrabold text-white tracking-tighter"
+              style={{ fontFamily: FONTS.bold, fontSize: headingSize, lineHeight: headingLineHeight }}
             >
               Unlock
             </Text>
             <Text
-              className="text-[56px] font-extrabold text-white leading-[60px] tracking-tighter"
-              style={{ fontFamily: FONTS.bold }}
+              className="font-extrabold text-white tracking-tighter"
+              style={{ fontFamily: FONTS.bold, fontSize: headingSize, lineHeight: headingLineHeight }}
             >
               Your
             </Text>
             <Text
-              className="text-[56px] font-extrabold text-[#86BB71] leading-[60px] tracking-tighter italic"
-              style={{ fontFamily: FONTS.boldItalic }}
+              className="font-extrabold text-[#86BB71] tracking-tighter italic"
+              style={{ fontFamily: FONTS.boldItalic, fontSize: headingSize, lineHeight: headingLineHeight }}
             >
               Global
             </Text>
             <Text
-              className="text-[56px] font-extrabold text-[#86BB71] leading-[60px] tracking-tighter italic"
-              style={{ fontFamily: FONTS.boldItalic }}
+              className="font-extrabold text-[#86BB71] tracking-tighter italic"
+              style={{ fontFamily: FONTS.boldItalic, fontSize: headingSize, lineHeight: headingLineHeight }}
             >
               Future
             </Text>
@@ -131,11 +144,11 @@ export default function WelcomeScreen() {
         </View>
 
         {/* Bottom Actions & Terms */}
-        <View className="gap-3">
+        <View className="gap-3" style={{ marginTop: isCompact ? 32 : 'auto' }}>
           <TouchableOpacity
             className="bg-white h-14 rounded-full items-center justify-center active:opacity-90 shadow-sm"
             activeOpacity={0.88}
-            onPress={() => router.push('/home/homescreen')}
+            onPress={() => router.push('/home')}
             accessibilityRole="button"
             accessibilityLabel="Get Started"
           >
@@ -150,7 +163,7 @@ export default function WelcomeScreen() {
           <TouchableOpacity
             className="h-14 rounded-full border border-white/20 bg-white/[0.03] items-center justify-center active:opacity-80"
             activeOpacity={0.8}
-            onPress={() => router.push('/home/homescreen')}
+            onPress={() => router.push('/sign-in')}
             accessibilityRole="button"
             accessibilityLabel="Sign In"
           >
@@ -169,7 +182,8 @@ export default function WelcomeScreen() {
             BY CONTINUING YOU AGREE TO OUR TERMS OF SERVICE
           </Text>
         </View>
-      </View>
+        </View>
+      </ScrollView>
     </LinearGradient>
   );
 }

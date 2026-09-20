@@ -9,10 +9,11 @@ import {
   Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS, FONTS } from '../../theme/colors';
 import { CircularProgress } from '../../components/CircularProgress';
-import { FloatingBottomNav, TabKey } from '../../components/FloatingBottomNav';
+import { FloatingBottomNav } from '../../components/FloatingBottomNav';
 
 const { width } = Dimensions.get('window');
 
@@ -89,10 +90,10 @@ const FILTER_OPTIONS = [
 ];
 
 export default function HomeScreen() {
+  const router = useRouter();
   const insets = useSafeAreaInsets();
   const [selectedFilter, setSelectedFilter] = useState('All Types');
   const [scholarships, setScholarships] = useState(FEATURED_SCHOLARSHIPS);
-  const [activeTab, setActiveTab] = useState<TabKey>('home');
   const [hasNotification, setHasNotification] = useState(true);
 
   const toggleBookmark = (id: string) => {
@@ -479,8 +480,7 @@ export default function HomeScreen() {
 
       {/* Floating Bottom Nav */}
       <FloatingBottomNav
-        currentTab={activeTab}
-        onSelectTab={(tab) => setActiveTab(tab)}
+        currentTab="home"
       />
     </View>
   );
