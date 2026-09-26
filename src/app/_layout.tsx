@@ -33,7 +33,7 @@ export default function RootLayout() {
 
   return (
     <>
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
       <Stack
         screenOptions={{
           headerShown: false,
@@ -47,6 +47,8 @@ export default function RootLayout() {
         <Stack.Screen name="home/index" options={{ headerShown: false }} />
         <Stack.Screen name="scholarships/index" options={{ headerShown: false }} />
         <Stack.Screen name="scholarships/details" options={{ headerShown: false }} />
+        <Stack.Screen name="tracker" options={{ headerShown: false }} />
+        <Stack.Screen name="about" options={{ headerShown: false }} />
       </Stack>
     </>
   );

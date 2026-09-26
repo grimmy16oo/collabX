@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { View, TouchableOpacity, Platform } from 'react-native';
-import { useRouter } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
-import { COLORS } from '../theme/colors';
+import { Ionicons } from "@expo/vector-icons";
+import { Href, useRouter } from "expo-router";
+import React, { useState } from "react";
+import { Platform, TouchableOpacity, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { COLORS } from "../theme/colors";
 
-export type TabKey = 'home' | 'search' | 'grid' | 'profile';
+export type TabKey = "home" | "search" | "grid" | "profile";
 
 interface FloatingBottomNavProps {
   currentTab?: TabKey;
@@ -12,23 +13,32 @@ interface FloatingBottomNavProps {
 }
 
 export const FloatingBottomNav: React.FC<FloatingBottomNavProps> = ({
-  currentTab = 'home',
+  currentTab,
   onSelectTab,
 }) => {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<TabKey>(currentTab);
+  const insets = useSafeAreaInsets();
+  const [activeTab, setActiveTab] = useState<TabKey>(currentTab ?? "home");
 
   const handlePress = (tab: TabKey) => {
+    const effectiveActive = currentTab ?? activeTab;
+    if (effectiveActive === tab) return;
+
     setActiveTab(tab);
     if (onSelectTab) {
       onSelectTab(tab);
-    } else {
-      if (tab === 'home' && currentTab !== 'home') {
-        router.push('/home');
-      } else if (tab === 'search' && currentTab !== 'search') {
-        router.push('/scholarships');
-      }
+      return;
     }
+
+    const routeMap: Record<TabKey, string> = {
+      home: "/home",
+      search: "/scholarships",
+      grid: "/tracker",
+      profile: "/about",
+    };
+
+    const target = routeMap[tab];
+    if (target) router.push(target as Href);
   };
 
   const navItems: {
@@ -36,28 +46,28 @@ export const FloatingBottomNav: React.FC<FloatingBottomNavProps> = ({
     icon: keyof typeof Ionicons.glyphMap;
     size: number;
   }[] = [
-    { key: 'home', icon: 'home-outline', size: 23 },
-    { key: 'search', icon: 'search-outline', size: 22 },
-    { key: 'grid', icon: 'grid-outline', size: 21 },
-    { key: 'profile', icon: 'person-outline', size: 22 },
+    { key: "home", icon: "home-outline", size: 23 },
+    { key: "search", icon: "search-outline", size: 22 },
+    { key: "grid", icon: "grid-outline", size: 21 },
+    { key: "profile", icon: "person-outline", size: 22 },
   ];
 
-  const effectiveActive = currentTab || activeTab;
+  const effectiveActive = currentTab ?? activeTab;
 
   return (
     <View
       className="absolute left-0 right-0 items-center justify-center z-50"
       style={{
-        bottom: Platform.OS === 'ios' ? 24 : 18,
-        pointerEvents: 'box-none' as any,
+        bottom: Math.max(insets.bottom, 16),
+        pointerEvents: "box-none" as any,
       }}
     >
       <View
-        className="flex-row items-center justify-between bg-[#152E18] w-[260px] h-16 px-2 rounded-full shadow-2xl"
+        className="flex-row items-center justify-between bg-[#173B18] w-[343px] max-w-[91%] h-[72px] px-3 rounded-full shadow-2xl"
         style={{
           ...Platform.select({
             web: {
-              boxShadow: '0px 10px 28px rgba(10, 24, 11, 0.28)',
+              boxShadow: "0px 10px 28px rgba(10, 24, 11, 0.28)",
             },
           }),
         }}
@@ -69,8 +79,8 @@ export const FloatingBottomNav: React.FC<FloatingBottomNavProps> = ({
               key={item.key}
               onPress={() => handlePress(item.key)}
               activeOpacity={0.82}
-              className={`w-12 h-12 rounded-full items-center justify-center ${
-                isActive ? 'bg-[#476C19]' : ''
+              className={`w-12 h-12 rounded-2xl items-center justify-center ${
+                isActive ? "bg-[#476C19]" : ""
               }`}
               accessibilityRole="button"
               accessibilityLabel={item.key}
@@ -78,7 +88,7 @@ export const FloatingBottomNav: React.FC<FloatingBottomNavProps> = ({
               <Ionicons
                 name={item.icon}
                 size={item.size}
-                color={isActive ? '#FFFFFF' : COLORS.navInactiveIcon}
+                color={isActive ? "#FFFFFF" : COLORS.navInactiveIcon}
               />
             </TouchableOpacity>
           );

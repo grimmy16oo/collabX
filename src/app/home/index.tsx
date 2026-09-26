@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import { useState } from "react";
 import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  Image,
   Dimensions,
-  Platform,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { COLORS, FONTS } from '../../theme/colors';
-import { CircularProgress } from '../../components/CircularProgress';
-import { FloatingBottomNav } from '../../components/FloatingBottomNav';
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { CircularProgress } from "../../components/CircularProgress";
+import { FloatingBottomNav } from "../../components/FloatingBottomNav";
+import { COLORS, FONTS } from "../../theme/colors";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 interface ScholarshipItem {
   id: string;
@@ -32,75 +31,75 @@ interface ScholarshipItem {
 
 const FEATURED_SCHOLARSHIPS: ScholarshipItem[] = [
   {
-    id: '1',
-    title: 'Gates Cambridge Scholarship',
-    institution: 'University of Cambridge',
-    monogram: 'GC',
-    monogramBg: '#183119',
-    country: 'UK',
-    fundingType: 'FULL FUNDING',
-    deadline: 'Dec 15, 2026',
-    amount: '$45,000',
+    id: "1",
+    title: "Gates Cambridge Scholarship",
+    institution: "University of Cambridge",
+    monogram: "GC",
+    monogramBg: "#183119",
+    country: "UK",
+    fundingType: "FULL FUNDING",
+    deadline: "Dec 15, 2026",
+    amount: "$45,000",
     isBookmarked: true,
   },
   {
-    id: '2',
-    title: 'Rhodes Trust Scholarship',
-    institution: 'University of Oxford',
-    monogram: 'RS',
-    monogramBg: '#213A1C',
-    country: 'UK',
-    fundingType: 'FULL FUNDING',
-    deadline: 'Oct 02, 2026',
-    amount: '$52,000',
+    id: "2",
+    title: "Rhodes Trust Scholarship",
+    institution: "University of Oxford",
+    monogram: "RS",
+    monogramBg: "#213A1C",
+    country: "UK",
+    fundingType: "FULL FUNDING",
+    deadline: "Oct 02, 2026",
+    amount: "$52,000",
     isBookmarked: false,
   },
   {
-    id: '3',
-    title: 'Fulbright Foreign Program',
-    institution: 'US Department of State',
-    monogram: 'FB',
-    monogramBg: '#1E3B24',
-    country: 'USA',
-    fundingType: 'FULL FUNDING',
-    deadline: 'Sep 18, 2026',
-    amount: '$40,000',
+    id: "3",
+    title: "Fulbright Foreign Program",
+    institution: "US Department of State",
+    monogram: "FB",
+    monogramBg: "#1E3B24",
+    country: "USA",
+    fundingType: "FULL FUNDING",
+    deadline: "Sep 18, 2026",
+    amount: "$40,000",
     isBookmarked: false,
   },
   {
-    id: '4',
-    title: 'Schwarzman Scholars',
-    institution: 'Tsinghua University',
-    monogram: 'SS',
-    monogramBg: '#142C16',
-    country: 'CHINA',
-    fundingType: 'FULL FUNDING',
-    deadline: 'Nov 01, 2026',
-    amount: '$60,000',
+    id: "4",
+    title: "Schwarzman Scholars",
+    institution: "Tsinghua University",
+    monogram: "SS",
+    monogramBg: "#142C16",
+    country: "CHINA",
+    fundingType: "FULL FUNDING",
+    deadline: "Nov 01, 2026",
+    amount: "$60,000",
     isBookmarked: false,
   },
 ];
 
 const FILTER_OPTIONS = [
-  'All Types',
-  'Full Funding',
-  'Undergraduate',
-  'Postgraduate',
-  'STEM & Tech',
+  "All Types",
+  "Full Funding",
+  "Undergraduate",
+  "Postgraduate",
+  "STEM & Tech",
 ];
 
 export default function HomeScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const [selectedFilter, setSelectedFilter] = useState('All Types');
+  const [selectedFilter, setSelectedFilter] = useState("All Types");
   const [scholarships, setScholarships] = useState(FEATURED_SCHOLARSHIPS);
   const [hasNotification, setHasNotification] = useState(true);
 
   const toggleBookmark = (id: string) => {
     setScholarships((prev) =>
       prev.map((item) =>
-        item.id === id ? { ...item, isBookmarked: !item.isBookmarked } : item
-      )
+        item.id === id ? { ...item, isBookmarked: !item.isBookmarked } : item,
+      ),
     );
   };
 
@@ -120,7 +119,7 @@ export default function HomeScreen() {
             <View className="w-12 h-12 rounded-full border-2 border-white shadow-sm overflow-hidden">
               <Image
                 source={{
-                  uri: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+                  uri: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
                 }}
                 className="w-full h-full rounded-full"
               />
@@ -148,7 +147,11 @@ export default function HomeScreen() {
             accessibilityRole="button"
             accessibilityLabel="Notifications"
           >
-            <Ionicons name="notifications-outline" size={21} color={COLORS.headingDark} />
+            <Ionicons
+              name="notifications-outline"
+              size={21}
+              color={COLORS.headingDark}
+            />
             {hasNotification && (
               <View className="absolute top-[11px] right-3 w-2 h-2 rounded-full bg-[#EF4444] border-[1.5px] border-white" />
             )}
@@ -161,7 +164,7 @@ export default function HomeScreen() {
             className="text-[34px] font-extrabold text-[#152A17] leading-10 tracking-tight"
             style={{ fontFamily: FONTS.bold }}
           >
-            Find your perfect{'\n'}
+            Find your perfect{"\n"}
             <Text
               className="italic text-[#3D6414]"
               style={{ fontFamily: FONTS.boldItalic }}
@@ -220,7 +223,8 @@ export default function HomeScreen() {
                 className="text-[13px] text-[#B6CAB2] leading-[18px]"
                 style={{ fontFamily: FONTS.regular }}
               >
-                You qualify for 18 fully funded global awards matching your credentials.
+                You qualify for 18 fully funded global awards matching your
+                credentials.
               </Text>
             </View>
 
@@ -246,15 +250,15 @@ export default function HomeScreen() {
                   activeOpacity={0.8}
                   className={`py-2.5 px-4.5 rounded-full border ${
                     isActive
-                      ? 'bg-[#3D6414] border-[#3D6414]'
-                      : 'bg-white border-[#ECEFE4]'
+                      ? "bg-[#3D6414] border-[#3D6414]"
+                      : "bg-white border-[#ECEFE4]"
                   }`}
                   accessibilityRole="button"
                   accessibilityLabel={`Filter: ${filter}`}
                 >
                   <Text
                     className={`text-[13px] font-semibold ${
-                      isActive ? 'text-white' : 'text-[#152A17]'
+                      isActive ? "text-white" : "text-[#152A17]"
                     }`}
                     style={{ fontFamily: FONTS.bold }}
                   >
@@ -319,9 +323,9 @@ export default function HomeScreen() {
                     accessibilityLabel="Toggle bookmark"
                   >
                     <Ionicons
-                      name={item.isBookmarked ? 'bookmark' : 'bookmark-outline'}
+                      name={item.isBookmarked ? "bookmark" : "bookmark-outline"}
                       size={18}
-                      color={item.isBookmarked ? COLORS.accentOlive : '#7B8E78'}
+                      color={item.isBookmarked ? COLORS.accentOlive : "#7B8E78"}
                     />
                   </TouchableOpacity>
                 </View>
@@ -347,7 +351,11 @@ export default function HomeScreen() {
                 {/* Tags */}
                 <View className="flex-row items-center gap-2 mb-4">
                   <View className="flex-row items-center bg-[#EDF3E8] py-1 px-2.5 rounded-xl gap-1">
-                    <Ionicons name="location-sharp" size={11} color={COLORS.tagText} />
+                    <Ionicons
+                      name="location-sharp"
+                      size={11}
+                      color={COLORS.tagText}
+                    />
                     <Text
                       className="text-[11px] font-bold text-[#2C4C16] tracking-wide"
                       style={{ fontFamily: FONTS.bold }}
@@ -479,9 +487,7 @@ export default function HomeScreen() {
       </ScrollView>
 
       {/* Floating Bottom Nav */}
-      <FloatingBottomNav
-        currentTab="home"
-      />
+      <FloatingBottomNav currentTab="home" />
     </View>
   );
 }
