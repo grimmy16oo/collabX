@@ -124,3 +124,18 @@ To test the production asset bundling across all platforms:
 ```bash
 npx expo export
 ```
+
+## Scholarships API (MongoDB Atlas)
+
+`src/data/scholarships.json` is the source dataset (59 records). The Express API stores it in the database selected by `MONGO_URI`, in the `scholarships` collection. Each record's source `id` is unique; imports upsert by that id.
+
+1. Create an Atlas database user and allow your development machine's public IP in Atlas Network Access.
+2. Copy `backend/.env.example` to `backend/.env` and set `MONGO_URI`. Keep this file private.
+3. From the project root run `npm run backend:install` and `npm run scholarships:import`.
+4. Start the API with `npm run backend:dev` (or `npm run backend:start`). It listens on `0.0.0.0:4000`. Check `http://localhost:4000/api/health`.
+5. Set `EXPO_PUBLIC_API_URL` in the root `.env` to `http://<computer-LAN-IP>:4000`. The current Wi-Fi adapter address detected for this computer is `192.168.10.30`. The phone and computer must share a network and the computer firewall must allow inbound TCP port 4000.
+6. Start Expo with `npx expo start`; reload the app after changing `.env`.
+
+API routes: `GET /api/scholarships` returns `{ data, count }`; `GET /api/scholarships/:id` looks up a source record id. List filters are `q`, `country`, `level`, `field`, and `eligibleCountry`.
+
+Saved scholarships are local to the device and reference API record ids. The dataset does not include applicant profile data, eligibility rules, match scores, or application progress, so the UI does not claim a match or invent tracked applications.

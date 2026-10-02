@@ -1,0 +1,1 @@
+export interface Scholarship { id:string; title:string; provider_name:string; country:string; study_levels:string[]; fields_of_study:string[]; eligible_countries:string[]; award_amount:string; currency:string; benefits:string[]; deadline:string; deadline_timezone:string; source_url:string; application_url:string; last_verified_at:string; }

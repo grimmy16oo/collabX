@@ -1,0 +1,10 @@
+require('dotenv').config();
+const express=require('express'), cors=require('cors'), mongoose=require('mongoose'), Scholarship=require('./models/Scholarship');
+const app=express(); app.use(cors()); app.use(express.json());
+app.get('/api/health',(_req,res)=>res.json({status:'ok',database:mongoose.connection.readyState===1?'connected':'disconnected'}));
+app.get('/api/scholarships',async(req,res,next)=>{try{const {q,country,level,field,eligibleCountry}=req.query,filter={}; if(country)filter.country=new RegExp(escapeRegex(String(country)),'i'); if(level)filter.study_levels=new RegExp(escapeRegex(String(level)),'i'); if(field)filter.fields_of_study=new RegExp(escapeRegex(String(field)),'i'); if(eligibleCountry)filter.eligible_countries=new RegExp(escapeRegex(String(eligibleCountry)),'i'); if(q)filter.$or=['title','provider_name','country','study_levels','fields_of_study','eligible_countries','award_amount'].map(k=>({[k]:new RegExp(escapeRegex(String(q)),'i')})); const data=await Scholarship.find(filter).select('-__v').sort({title:1}).lean(); res.json({data,count:data.length});}catch(e){next(e)}});
+app.get('/api/scholarships/:id',async(req,res,next)=>{try{const data=await Scholarship.findOne({id:req.params.id}).select('-__v').lean(); if(!data)return res.status(404).json({error:'Scholarship not found'}); res.json({data});}catch(e){next(e)}});
+function escapeRegex(s){return s.replace(/[.*+?^$()|[\]{}\\]/g,'\\$&')}
+app.use((e,_req,res,_next)=>{console.error(e);res.status(500).json({error:'Server error'})});
+const port=Number(process.env.PORT||4000); if(!process.env.MONGO_URI){console.error('MONGO_URI is required. Copy backend/.env.example to backend/.env and set Atlas credentials.');process.exit(1)}
+mongoose.connect(process.env.MONGO_URI,{serverSelectionTimeoutMS:10000}).then(()=>app.listen(port,'0.0.0.0',()=>console.log('CollabX API listening on 0.0.0.0:'+port))).catch(e=>{console.error('MongoDB connection failed:',e.message);process.exit(1)});

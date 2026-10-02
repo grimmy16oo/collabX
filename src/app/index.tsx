@@ -96,7 +96,7 @@ export default function WelcomeScreen() {
             className="text-base text-[#A3BEA1] leading-6 mb-6 max-w-[94%]"
             style={{ fontFamily: FONTS.regular }}
           >
-            Personalized scholarship matching for every ambitious student.
+            Explore scholarship records with official eligibility and application links.
           </Text>
 
           {/* Social Proof */}
