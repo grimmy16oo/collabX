@@ -21,7 +21,18 @@
     "deadline_timezone": "UTC",
     "source_url": "https://www.chevening.org/scholarships/",
     "application_url": "https://www.chevening.org/apply/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "languages": ["English"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "At least 2 years (2,800 hours) of work experience acquired after completing an undergraduate degree.",
+        "Undergraduate degree must qualify the applicant for a UK master's programme and must have been completed at least two years before the application deadline.",
+        "Must apply to three eligible UK master's courses and receive at least one unconditional offer by the relevant deadline.",
+        "Commitment to return to the country of award for at least two years after the scholarship ends."
+      ]
+    }
   },
   {
     "id": "commonwealth-masters-uk",
@@ -47,7 +58,16 @@
     "deadline_timezone": "BST",
     "source_url": "https://cscuk.fcdo.gov.uk/scholarships/commonwealth-masters-scholarships/",
     "application_url": "https://cscuk.fcdo.gov.uk/apply/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "By the start of the academic year, hold a first degree at least equivalent to UK upper-second-class (2:1), or a lower-second-class degree plus a relevant postgraduate qualification.",
+        "Must be permanently resident in an eligible Commonwealth country and unable to afford UK study without the scholarship.",
+        "Full-time study only; MBA and research master's programmes are not funded."
+      ]
+    }
   },
   {
     "id": "commonwealth-phd-uk",
@@ -73,7 +93,17 @@
     "deadline_timezone": "UK local time",
     "source_url": "https://cscuk.fcdo.gov.uk/scholarships/commonwealth-phd-scholarships/",
     "application_url": "https://cscuk.fcdo.gov.uk/apply/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["PhD"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "By the start of study, hold a first degree at least equivalent to UK upper-second-class (2:1), or a lower-second-class degree plus a relevant postgraduate qualification.",
+        "Must be permanently resident in an eligible Commonwealth country.",
+        "Must not already be registered for a PhD/MPhil leading to a PhD at the specified eligibility date.",
+        "Application requires nomination through an eligible nominating agency/organisation."
+      ]
+    }
   },
   {
     "id": "commonwealth-shared-uk",
@@ -99,7 +129,17 @@
     "deadline_timezone": "UK local time",
     "source_url": "https://cscuk.fcdo.gov.uk/scholarships/commonwealth-shared-scholarships/",
     "application_url": "https://cscuk.fcdo.gov.uk/apply/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "Must be unable to afford UK study without the scholarship.",
+        "Must not have studied or worked for one academic year or more in a high-income country.",
+        "Must commit to returning to the home country before the end of the UK visa.",
+        "Courses are selected from CSC-approved development-theme programmes at participating universities."
+      ]
+    }
   },
   {
     "id": "australia-awards-bangladesh",
@@ -123,7 +163,16 @@
     "deadline_timezone": "Australia local time",
     "source_url": "https://www.dfat.gov.au/people-to-people/australia-awards",
     "application_url": "https://www.australiaawardsbangladesh.org/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "Must be a citizen of Bangladesh and residing in and applying from Bangladesh.",
+        "Bangladesh applicants must be an existing employee in one of the specified target groups: government/cadre or Bangladesh Bank/Judicial Services; development organisations; private-sector entrepreneurs/employees; or research institutions, universities, media and cultural organisations.",
+        "Study must be in a Bangladesh priority development field; the current country profile includes Computer Science including AI/ML under Infrastructure Science Engineering."
+      ]
+    }
   },
   {
     "id": "fulbright-bangladesh",
@@ -146,7 +195,18 @@
     "deadline_timezone": "Dhaka local time",
     "source_url": "https://foreign.fulbrightonline.org/",
     "application_url": "https://bd.usembassy.gov/education-culture/fulbright-program/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "Doctorate"],
+      "languages": ["English"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "Must reside in the country of nomination at application.",
+        "Must hold the equivalent of a U.S. bachelor's degree with a good academic record by the programme start date.",
+        "English proficiency is required; Fulbright lists recommended recent minimum scores of TOEFL PBT 550, TOEFL iBT 79-80, or IELTS 6.5.",
+        "Additional Bangladesh-specific requirements are set by the U.S. Embassy/nominating office."
+      ]
+    }
   },
   {
     "id": "mext-research-japan",
@@ -163,7 +223,15 @@
     "deadline_timezone": "Local embassy/university time",
     "source_url": "https://www.studyinjapan.go.jp/en/smap-stopj-applications/research-students/",
     "application_url": "https://www.bd.emb-japan.go.jp/itpr_en/studyinjapan.html",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD", "Research"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "Research applicants must be under 35 and eligible for admission to a master's or doctoral programme at a Japanese graduate school.",
+        "Embassy-recommendation applicants take Japanese and English examinations."
+      ]
+    }
   },
   {
     "id": "mext-undergraduate-japan",
@@ -185,7 +253,15 @@
     "deadline_timezone": "Local embassy time",
     "source_url": "https://www.studyinjapan.go.jp/en/smap-stopj-applications/undergraduate/",
     "application_url": "https://www.bd.emb-japan.go.jp/itpr_en/studyinjapan.html",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "Must be under 25 and have completed 12 years of school education (or equivalent) by the applicable eligibility date.",
+        "Embassy-recommendation applicants take Japanese, English, mathematics and science examinations; science applicants choose two of chemistry, physics or biology."
+      ]
+    }
   },
   {
     "id": "gks-graduate-korea",
@@ -209,7 +285,16 @@
     "deadline_timezone": "Korea local time",
     "source_url": "https://www.studyinkorea.go.kr/",
     "application_url": "https://www.studyinkorea.go.kr/en/sub/gks/allnew_invite.do",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD", "Research"],
+      "other": [
+        "Applicant and both parents must hold non-Korean citizenship.",
+        "Must be under 40 years of age.",
+        "Must have graduated with a bachelor's or master's degree for the relevant graduate programme.",
+        "Must meet the current GKS academic-performance requirement; the official guideline uses a qualifying percentage/rank/CGPA threshold rather than a single universal 4.0-scale CGPA."
+      ]
+    }
   },
   {
     "id": "gks-undergraduate-korea",
@@ -232,7 +317,16 @@
     "deadline_timezone": "Korea local time",
     "source_url": "https://www.studyinkorea.go.kr/",
     "application_url": "https://www.studyinkorea.go.kr/en/sub/gks/allnew_invite.do",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate"],
+      "other": [
+        "Applicant and both parents must hold non-Korean citizenship.",
+        "Must be under 25 years of age.",
+        "Must be a high-school or associate-degree graduate/expected graduate for the bachelor's route.",
+        "Must meet the GKS academic-performance requirement, such as 80%+, top 20% of the class, or the applicable CGPA threshold."
+      ]
+    }
   },
   {
     "id": "erasmus-mundus-joint-masters",
@@ -254,7 +348,15 @@
     "deadline_timezone": "Programme local time",
     "source_url": "https://education.ec.europa.eu/study-in-europe/programmes-and-scholarships/erasmus-mundus-joint-masters",
     "application_url": "https://www.eacea.ec.europa.eu/scholarships/emjm-catalogue_en",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "A bachelor's degree is required to apply.",
+        "Open to students worldwide; nationality does not affect basic eligibility.",
+        "Programme-specific admission requirements, including language requirements, are set by each Erasmus Mundus master's consortium."
+      ]
+    }
   },
   {
     "id": "daad-epos",
@@ -277,7 +379,18 @@
     "deadline_timezone": "German local time",
     "source_url": "https://www.daad.de/en/studying-in-germany/scholarships/daad-scholarships/",
     "application_url": "https://www.daad.de/en/studying-in-germany/universities/all-degree-programmes/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "Normally requires a bachelor's degree in a related subject.",
+        "Academic degree should normally be no more than six years old.",
+        "At least two years of relevant professional experience after the first degree are required.",
+        "Typical EPOS applicants have above-average academic results (upper third).",
+        "Language requirements depend on the individual course; DAAD EPOS FAQ gives IELTS 6/TOEFL equivalents as normal English minima, while German-taught courses have German requirements."
+      ]
+    }
   },
   {
     "id": "turkiye-scholarships",
@@ -301,7 +414,17 @@
     "deadline_timezone": "Türkiye local time",
     "source_url": "https://www.turkiyeburslari.gov.tr/",
     "application_url": "https://tbbs.turkiyeburslari.gov.tr/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters", "PhD"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "Minimum academic achievement: 70% for associate/bachelor's, 75% for graduate applicants, and 90% for Medicine, Dentistry and Pharmacy.",
+        "Age limits: under 21 for bachelor's, under 30 for master's, under 35 for PhD.",
+        "Open to citizens of all countries except Turkish citizens and people who have lost Turkish citizenship.",
+        "Applicants already enrolled in Turkey at the level they are applying for are ineligible."
+      ]
+    }
   },
   {
     "id": "stipendium-hungaricum",
@@ -323,7 +446,15 @@
     "deadline_timezone": "Central European Time",
     "source_url": "https://stipendiumhungaricum.hu/",
     "application_url": "https://apply.diasporascholarship.hu/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters", "PhD"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "Eligibility and available study programmes are governed by the current annual Call for Applications and the sending-partner arrangements.",
+        "Applicants must apply to eligible study programmes and satisfy the host institution's admission requirements."
+      ]
+    }
   },
   {
     "id": "si-scholarship-global-professionals",
@@ -345,7 +476,15 @@
     "deadline_timezone": "Sweden local time",
     "source_url": "https://si.se/en/apply/scholarships/scholarships-for-global-professionals/",
     "application_url": "https://si.se/en/apply/scholarships/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "Open only to citizens of the countries included in the Swedish Institute's current eligible-country list and to eligible master's programmes.",
+        "Applicants must first be admitted to an eligible Swedish master's programme; programme-specific entry requirements apply."
+      ]
+    }
   },
   {
     "id": "eiffel-france",
@@ -374,7 +513,23 @@
     "deadline_timezone": "France local time",
     "source_url": "https://www.campusfrance.org/en/eiffel-scholarship-program-of-excellence",
     "application_url": "https://www.campusfrance.org/en/eiffel-scholarship-program-of-excellence",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD"],
+      "nationalities": ["Bangladesh"],
+      "fields": [
+        "Science and technology",
+        "Law",
+        "Political science",
+        "Economics",
+        "Management"
+      ],
+      "other": [
+        "Applications are submitted by French higher-education institutions, not directly by students.",
+        "Master's and doctoral applicants must be selected by a French institution for an eligible programme.",
+        "The 2027 call covers Biology and Health, Ecological Transition, Mathematics and Digital Sciences, Engineering Sciences, History/French Language/Civilization, Law and Political Science, and Economics and Management."
+      ]
+    }
   },
   {
     "id": "nl-scholarship",
@@ -391,7 +546,16 @@
     "deadline_timezone": "Netherlands local time",
     "source_url": "https://www.studyinnl.org/finances/nl-scholarship",
     "application_url": "https://www.studyinnl.org/finances/nl-scholarship",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters"],
+      "other": [
+        "Nationality must be outside the EEA.",
+        "Must apply for a full-time bachelor's or master's programme at a participating Dutch higher-education institution.",
+        "Must meet the institution-specific requirements.",
+        "Must not already hold a degree from an education institution in the Netherlands."
+      ]
+    }
   },
   {
     "id": "manaaki-new-zealand",
@@ -415,7 +579,19 @@
     "deadline_timezone": "New Zealand local time",
     "source_url": "https://www.nzscholarships.govt.nz/",
     "application_url": "https://www.nzscholarships.govt.nz/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters", "PhD"],
+      "nationalities": ["Bangladesh"],
+      "languages": ["English"],
+      "other": [
+        "Must be a citizen of an eligible country and have lived in the home country for the two years before applying (subject to stated exceptions).",
+        "Postgraduate applicants normally need one year of full-time or two years of part-time relevant work experience.",
+        "Must be at least 18 at the time of signing the scholarship offer; there is no upper age limit.",
+        "Must meet the academic and English-language requirements of the chosen institution/course; general postgraduate guidance is IELTS 6.5 overall with no band below 6.0, or equivalent TOEFL/PTE/Cambridge scores.",
+        "Bangladesh must be an eligible country for the relevant intake and subject list."
+      ]
+    }
   },
   {
     "id": "vlir-uos",
@@ -438,7 +614,15 @@
     "deadline_timezone": "Belgium local time",
     "source_url": "https://www.vliruos.be/en/scholarships",
     "application_url": "https://www.vliruos.be/en/scholarships",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "Training"],
+      "other": [
+        "Applicants must be nationals and residents of one of the VLIR-UOS eligible countries; the current eligible-country list must be checked for the intake because it changes.",
+        "For an initial master's, applicants cannot be older than 35 on 1 January of the intake year; advanced master's: 45.",
+        "Relevant professional background is considered/preferred for ICP Connect programmes; programme-specific academic requirements apply."
+      ]
+    }
   },
   {
     "id": "swiss-government-excellence",
@@ -460,7 +644,16 @@
     "deadline_timezone": "Swiss local time",
     "source_url": "https://www.sbfi.admin.ch/sbfi/en/home/education/scholarships-and-grants/swiss-government-excellence-scholarships.html",
     "application_url": "https://www.sbfi.admin.ch/sbfi/en/home/education/scholarships-and-grants/swiss-government-excellence-scholarships.html",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD", "Postdoctoral", "Research"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "Eligibility is scholarship-type and country specific; the current call must be checked for Bangladesh.",
+        "Research/PhD applicants require a detailed research plan and an academic supervisor in Switzerland.",
+        "For current research/PhD calls, a master's degree or equivalent is required and a specified birth-date cutoff applies."
+      ]
+    }
   },
   {
     "id": "romania-mfa-scholarship",
@@ -482,7 +675,19 @@
     "deadline_timezone": "Romania local time",
     "source_url": "https://studyinromania.gov.ro/",
     "application_url": "https://studyinromania.gov.ro/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters", "PhD"],
+      "nationalities": ["Bangladesh"],
+      "languages": ["Romanian"],
+      "other": [
+        "Open to citizens of non-EU countries, subject to listed exclusions.",
+        "Applicants must have at least a 7/10 (or 'Good') average under the Romanian grading system.",
+        "Bachelor's and master's programmes are in Romanian; non-Romanian speakers normally receive a preparatory Romanian-language year.",
+        "Doctoral applicants may study in Romanian or a foreign language set by the doctoral school.",
+        "Medicine, Dental Medicine and Pharmacy are excluded."
+      ]
+    }
   },
   {
     "id": "ireland-government-ie",
@@ -503,7 +708,15 @@
     "deadline_timezone": "Ireland local time",
     "source_url": "https://hea.ie/policy/internationalisation/goi-ies/",
     "application_url": "https://hea.ie/policy/internationalisation/goi-ies/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD"],
+      "other": [
+        "Applicant must have domicile of origin outside the EU/EEA, Switzerland and the UK.",
+        "Must have a conditional or final offer from an eligible Irish higher-education institution for a full-time master's, postgraduate diploma or PhD.",
+        "Applicants are expected to demonstrate outstanding academic achievement, excellent communication skills, extracurricular participation and a strong rationale for study in Ireland."
+      ]
+    }
   },
   {
     "id": "clarendon-oxford",
@@ -520,7 +733,16 @@
     "deadline_timezone": "UK local time",
     "source_url": "https://www.ox.ac.uk/clarendon",
     "application_url": "https://www.ox.ac.uk/clarendon",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "DPhil"],
+      "other": [
+        "Open to all nationalities and ordinary residences.",
+        "All full-time and part-time Master's and DPhil courses are eligible.",
+        "Must submit the Oxford graduate application by the relevant December or January funding deadline.",
+        "An excellent academic record is essential; Oxford says most successful scholars usually have at least a first-class equivalent and gives 3.7/4 as an example benchmark, but requirements vary by discipline and year."
+      ]
+    }
   },
   {
     "id": "gates-cambridge",
@@ -543,7 +765,15 @@
     "deadline_timezone": "UK local time",
     "source_url": "https://www.gatescambridge.org/",
     "application_url": "https://www.gatescambridge.org/apply/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD"],
+      "other": [
+        "Open to applicants who are not UK citizens.",
+        "Must apply to an eligible full-time postgraduate course at the University of Cambridge.",
+        "Selection emphasises academic excellence, reasons for choice of course, commitment to improving the lives of others and leadership potential."
+      ]
+    }
   },
   {
     "id": "imperial-presidents-phd",
@@ -564,7 +794,16 @@
     "deadline_timezone": "UK local time",
     "source_url": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/doctoral-scholarships/presidents-phd/",
     "application_url": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/doctoral-scholarships/presidents-phd/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["PhD"],
+      "other": [
+        "Open worldwide with no nationality restriction.",
+        "Must be a new PhD applicant.",
+        "Academic criterion: first-class undergraduate/integrated master's degree or equivalent, or a distinction in a standalone master's qualification.",
+        "Must have an Imperial academic supervisor who has agreed to supervise the research project."
+      ]
+    }
   },
   {
     "id": "ucl-global-masters",
@@ -581,7 +820,15 @@
     "deadline_timezone": "UK local time",
     "source_url": "https://www.ucl.ac.uk/scholarships/ucl-global-masters-scholarship",
     "application_url": "https://www.ucl.ac.uk/scholarships/ucl-global-masters-scholarship",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "Must be eligible for Overseas fee status and come from a lower-income background.",
+        "Must submit a complete admission application for a full-time UCL master's degree.",
+        "Distance-learning options are not eligible."
+      ]
+    }
   },
   {
     "id": "manchester-global-futures",
@@ -598,7 +845,17 @@
     "deadline_timezone": "UK local time",
     "source_url": "https://www.manchester.ac.uk/study/international/finance-and-funding/",
     "application_url": "https://www.manchester.ac.uk/study/international/finance-and-funding/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters"],
+      "nationalities": ["Bangladesh"],
+      "other": [
+        "For the South Asia master's award, applicants must be permanently resident in Bangladesh, India, Pakistan or Sri Lanka and must have predominantly resided there during the previous three years.",
+        "South Asia master's applicants must hold a bachelor's degree obtained in South Asia and at least an upper-second-class degree or overseas equivalent.",
+        "Applicants must hold a full-time on-campus offer from the University of Manchester.",
+        "Eligibility and academic thresholds vary by country and level."
+      ]
+    }
   },
   {
     "id": "ntu-nanyang-president",
@@ -619,7 +876,15 @@
     "deadline_timezone": "Singapore local time",
     "source_url": "https://www.ntu.edu.sg/",
     "application_url": "https://www.ntu.edu.sg/admissions/graduate",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["PhD"],
+      "other": [
+        "Open to all nationalities.",
+        "Requires an Honours (Highest Distinction) bachelor's degree or equivalent.",
+        "For applicants not yet graduated, official evidence of being on track for the required honours result is required."
+      ]
+    }
   },
   {
     "id": "nus-research-scholarship",
@@ -636,7 +901,15 @@
     "deadline_timezone": "Singapore local time",
     "source_url": "https://www.nus.edu.sg/",
     "application_url": "https://www.nus.edu.sg/oam/graduate-programmes",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD"],
+      "other": [
+        "Open to Singapore citizens, permanent residents and international students.",
+        "Requires an undergraduate degree with at least Second Class Honours (Upper) / Honours (Distinction) or equivalent.",
+        "Applicants pursue a graduate research programme and must meet the programme's admission requirements."
+      ]
+    }
   },
   {
     "id": "kaist-international-student-scholarship",
@@ -657,7 +930,14 @@
     "deadline_timezone": "Korea local time",
     "source_url": "https://admission.kaist.ac.kr/",
     "application_url": "https://admission.kaist.ac.kr/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate"],
+      "other": [
+        "International students applying to KAIST undergraduate programmes are eligible subject to the admission requirements.",
+        "Academic and language requirements are governed by the current KAIST international admission guide."
+      ]
+    }
   },
   {
     "id": "kaist-graduate-scholarship",
@@ -678,7 +958,14 @@
     "deadline_timezone": "Korea local time",
     "source_url": "https://admission.kaist.ac.kr/graduate/",
     "application_url": "https://admission.kaist.ac.kr/graduate/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD"],
+      "other": [
+        "International graduate applicants must meet the admission requirements of the selected KAIST graduate programme.",
+        "Scholarship eligibility is tied to admission and programme-specific academic requirements."
+      ]
+    }
   },
   {
     "id": "snu-global-scholarships",
@@ -695,7 +982,14 @@
     "deadline_timezone": "Korea local time",
     "source_url": "https://en.snu.ac.kr/",
     "application_url": "https://en.snu.ac.kr/admission",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD"],
+      "other": [
+        "Eligibility varies by the specific SNU global scholarship and admission cycle.",
+        "Applicants must satisfy the relevant SNU graduate admission requirements."
+      ]
+    }
   },
   {
     "id": "melbourne-graduate-research",
@@ -717,7 +1011,15 @@
     "deadline_timezone": "Australia local time",
     "source_url": "https://study.unimelb.edu.au/find-scholarships/graduate-research-scholarships",
     "application_url": "https://study.unimelb.edu.au/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD"],
+      "other": [
+        "Must meet the University of Melbourne graduate-research entry requirements; an overseas qualification must be at least equivalent to an Australian honours degree or comparable research experience.",
+        "Most graduate research programmes require in-principle supervisor support.",
+        "English and discipline-specific research requirements may apply."
+      ]
+    }
   },
   {
     "id": "sydney-international-research",
@@ -734,7 +1036,14 @@
     "deadline_timezone": "Australia local time",
     "source_url": "https://www.sydney.edu.au/scholarships/",
     "application_url": "https://www.sydney.edu.au/scholarships/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD"],
+      "other": [
+        "Eligibility varies by the specific University of Sydney research scholarship and research programme.",
+        "Applicants must meet the relevant research-degree admission requirements; scholarship calls commonly require strong prior academic results."
+      ]
+    }
   },
   {
     "id": "unsw-international-scholarships",
@@ -751,7 +1060,13 @@
     "deadline_timezone": "Australia local time",
     "source_url": "https://www.unsw.edu.au/study/scholarships",
     "application_url": "https://www.unsw.edu.au/study/scholarships",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters"],
+      "other": [
+        "Eligibility varies by the individual UNSW scholarship; applicants must meet the scholarship-specific and programme admission requirements."
+      ]
+    }
   },
   {
     "id": "anu-chancellors-international",
@@ -768,7 +1083,15 @@
     "deadline_timezone": "Australia local time",
     "source_url": "https://study.anu.edu.au/scholarships",
     "application_url": "https://study.anu.edu.au/scholarships",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters"],
+      "other": [
+        "For commencing international students who receive an eligible ANU offer.",
+        "Selection is based on academic merit.",
+        "Excluded programmes include the Doctor of Medicine and Surgery (MChD) and Master of Military and Defence Studies."
+      ]
+    }
   },
   {
     "id": "monash-international-leadership",
@@ -785,7 +1108,16 @@
     "deadline_timezone": "Australia local time",
     "source_url": "https://www.monash.edu/study/fees-scholarships/scholarships",
     "application_url": "https://www.monash.edu/study/fees-scholarships/scholarships",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate"],
+      "other": [
+        "International students from all countries may be eligible.",
+        "Must receive a full unconditional Monash course offer and intend to enrol full-time in an undergraduate degree at a Monash campus in Australia.",
+        "Selection is based on high academic achievement.",
+        "Exclusions include current Monash students, Australian Year 12 students, certain pathway programmes, and specified medical programmes."
+      ]
+    }
   },
   {
     "id": "ubc-international-scholars",
@@ -805,7 +1137,15 @@
     "deadline_timezone": "Pacific Time",
     "source_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/",
     "application_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate"],
+      "other": [
+        "Must be an international student entering UBC directly from an accredited secondary school and pursuing a first undergraduate degree.",
+        "Must demonstrate significant financial need.",
+        "Must demonstrate superior academic achievement (all As or equivalent) and meet UBC English-language admission standards."
+      ]
+    }
   },
   {
     "id": "ubc-four-year-doctoral",
@@ -825,7 +1165,15 @@
     "deadline_timezone": "Pacific Time",
     "source_url": "https://www.grad.ubc.ca/awards/four-year-doctoral-fellowship",
     "application_url": "https://www.grad.ubc.ca/awards/four-year-doctoral-fellowship",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["PhD"],
+      "other": [
+        "Open to domestic and international students.",
+        "Generally for students beginning their first year of full-time PhD, DMA or MDPhD studies, though continuing students may be eligible in some circumstances.",
+        "Recipients must maintain satisfactory academic progress."
+      ]
+    }
   },
   {
     "id": "mcgill-international-scholarships",
@@ -846,7 +1194,14 @@
     "deadline_timezone": "Eastern Time",
     "source_url": "https://www.mcgill.ca/studentaid/scholarships-awards",
     "application_url": "https://www.mcgill.ca/studentaid/scholarships-awards",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters", "PhD"],
+      "other": [
+        "This record represents a group of McGill scholarships; eligibility, academic thresholds and nationality rules vary by individual award and programme.",
+        "Applicants must meet the admission and scholarship-specific requirements of the relevant McGill award."
+      ]
+    }
   },
   {
     "id": "waterloo-international-funding",
@@ -867,7 +1222,14 @@
     "deadline_timezone": "Eastern Time",
     "source_url": "https://uwaterloo.ca/future-students/financing",
     "application_url": "https://uwaterloo.ca/future-students/financing",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters", "PhD"],
+      "other": [
+        "This record represents multiple University of Waterloo awards; eligibility varies by award and level.",
+        "International entrance awards require admission to eligible full-time first-year degree studies; graduate awards have programme-specific requirements."
+      ]
+    }
   },
   {
     "id": "toronto-international-student-awards",
@@ -888,7 +1250,14 @@
     "deadline_timezone": "Eastern Time",
     "source_url": "https://future.utoronto.ca/finances/",
     "application_url": "https://future.utoronto.ca/finances/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters", "PhD"],
+      "other": [
+        "This record represents multiple University of Toronto awards; eligibility varies by award and programme.",
+        "Applicants must meet the relevant University of Toronto admission and scholarship-specific requirements."
+      ]
+    }
   },
   {
     "id": "trinity-global-excellence",
@@ -905,7 +1274,15 @@
     "deadline_timezone": "Ireland local time",
     "source_url": "https://www.tcd.ie/study/international/scholarships/",
     "application_url": "https://www.tcd.ie/study/international/scholarships/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "Must have non-EU fee status and a full-time postgraduate taught course offer at Trinity College Dublin.",
+        "Selection is based on academic achievement and potential to contribute to the Trinity community.",
+        "The 2026/27 Global Excellence scholarship excludes business, engineering, natural sciences, and computer science/statistics courses; separate awards apply for some of those areas."
+      ]
+    }
   },
   {
     "id": "limerick-international",
@@ -922,7 +1299,13 @@
     "deadline_timezone": "Ireland local time",
     "source_url": "https://www.ul.ie/global/scholarships",
     "application_url": "https://www.ul.ie/global/scholarships",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters"],
+      "other": [
+        "Eligibility varies by University of Limerick scholarship; applicants must meet the relevant programme admission and scholarship-specific criteria."
+      ]
+    }
   },
   {
     "id": "lund-global-scholarship",
@@ -939,7 +1322,15 @@
     "deadline_timezone": "Sweden local time",
     "source_url": "https://www.lunduniversity.lu.se/admissions/scholarships-and-funding/lund-university-global-scholarship",
     "application_url": "https://www.lunduniversity.lu.se/admissions/scholarships-and-funding",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "Must be a citizen outside the EU/EEA and Switzerland and liable for tuition fees.",
+        "Must apply to an eligible Lund degree programme, normally at master's level, and select Lund as first choice.",
+        "Selection is merit-based and targets high academic performance; no fixed minimum GPA is published on the scholarship page."
+      ]
+    }
   },
   {
     "id": "uppsala-global-scholarship",
@@ -956,7 +1347,15 @@
     "deadline_timezone": "Sweden local time",
     "source_url": "https://www.uu.se/en/study/scholarships",
     "application_url": "https://www.uu.se/en/study/scholarships",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "Must be a citizen outside the EU/EEA and Switzerland.",
+        "Must demonstrate academic talent and meet the entry requirements for the chosen master's programme.",
+        "The scholarship must be for the master's programme ranked first at University Admissions and the applicant must submit the complete admission application on time."
+      ]
+    }
   },
   {
     "id": "kth-scholarships",
@@ -973,7 +1372,15 @@
     "deadline_timezone": "Sweden local time",
     "source_url": "https://www.kth.se/en/studies/master/kth-scholarship-1.72827",
     "application_url": "https://www.kth.se/en/studies/master",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "Must be a fee-paying student and apply to a KTH master's programme as first priority.",
+        "Must meet the admission requirements of the selected master's programme.",
+        "Selection considers GPA/equivalent, bachelor's-university ranking, relevant research/work/teaching experience, awards/activities and motivation related to sustainable development."
+      ]
+    }
   },
   {
     "id": "helsinki-international-scholarship",
@@ -990,7 +1397,14 @@
     "deadline_timezone": "Finland local time",
     "source_url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/scholarships-and-tuition-fees",
     "application_url": "https://www.helsinki.fi/en/admissions-and-education",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "Must meet the University of Helsinki international master's admission requirements, including an equivalent bachelor's degree, relevant prior studies and sufficient language skills.",
+        "Scholarship availability and award rules are tied to the relevant international master's programme and admission cycle."
+      ]
+    }
   },
   {
     "id": "aalto-university-scholarships",
@@ -1007,7 +1421,14 @@
     "deadline_timezone": "Finland local time",
     "source_url": "https://www.aalto.fi/en/study-at-aalto/scholarships-and-tuition-fees",
     "application_url": "https://www.aalto.fi/en/study-at-aalto",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "Applicants must meet the admission requirements of the selected Aalto master's programme.",
+        "Scholarship decisions are programme-specific and tied to the master's admission process."
+      ]
+    }
   },
   {
     "id": "epfl-excellence-fellowship",
@@ -1027,7 +1448,16 @@
     "deadline_timezone": "Swiss local time",
     "source_url": "https://www.epfl.ch/education/studies/en/financing-study/grants-and-scholarships/",
     "application_url": "https://www.epfl.ch/education/studies/en/financing-study/grants-and-scholarships/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "fields": ["Science", "Engineering", "Technology"],
+      "other": [
+        "Open to international students who meet EPFL master's admission requirements.",
+        "Applicants already holding a master's degree or already enrolled in a master's programme at EPFL are not eligible.",
+        "There is no minimum GPA for the fellowship application; selection is competitive and considers academic excellence, qualifications and motivation."
+      ]
+    }
   },
   {
     "id": "eth-excellence-scholarship",
@@ -1048,7 +1478,15 @@
     "deadline_timezone": "Swiss local time",
     "source_url": "https://ethz.ch/en/studies/master/financial/scholarships/excellencescholarship.html",
     "application_url": "https://ethz.ch/en/studies/master/financial/scholarships.html",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "Requires a very good bachelor's result: ETH specifies top 10% of the bachelor's degree programme (grade A) as the benchmark.",
+        "Applicants already enrolled in a master's at ETH or already holding a master's degree are not eligible.",
+        "A master's thesis pre-proposal and references are required as specified by ETH."
+      ]
+    }
   },
   {
     "id": "maastricht-high-potential",
@@ -1070,7 +1508,16 @@
     "deadline_timezone": "Netherlands local time",
     "source_url": "https://www.maastrichtuniversity.nl/education/finances/scholarships",
     "application_url": "https://www.maastrichtuniversity.nl/education/finances/scholarships",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "Must have nationality outside the EU/EEA, Switzerland and Surinam.",
+        "Must be admitted to an eligible Maastricht University master's programme.",
+        "For the 2027/28 call, applicants need a GPA of at least 7.5/10; the university states the transcript must show at least 75% of the maximum grade, e.g. 3/4 equivalent to 7.5/10.",
+        "Scholarship is limited to participating master's programmes."
+      ]
+    }
   },
   {
     "id": "tu-delft-justus-louise",
@@ -1091,7 +1538,15 @@
     "deadline_timezone": "Netherlands local time",
     "source_url": "https://www.tudelft.nl/en/education/practical-matters/scholarships",
     "application_url": "https://www.tudelft.nl/en/education/practical-matters/scholarships",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "Must satisfy all admission criteria for the TU Delft MSc programme.",
+        "Scholarship applicants must submit the required English-language certificate with the MSc application unless exempt.",
+        "For second-year scholarship support, at least 48 of 60 ECTS must be completed after the first academic year."
+      ]
+    }
   },
   {
     "id": "radboud-scholarship",
@@ -1114,7 +1569,14 @@
     "deadline_timezone": "Netherlands local time",
     "source_url": "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme",
     "application_url": "https://www.ru.nl/en/education/scholarships",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters"],
+      "other": [
+        "Must be a non-EU/EEA student admitted to an eligible Radboud University master's programme.",
+        "Applicants must meet the relevant master's admission requirements and scholarship-specific criteria."
+      ]
+    }
   },
   {
     "id": "university-of-bologna-international",
@@ -1131,7 +1593,14 @@
     "deadline_timezone": "Italy local time",
     "source_url": "https://www.unibo.it/en/study/study-grants-and-subsidies",
     "application_url": "https://www.unibo.it/en/study/study-grants-and-subsidies",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters"],
+      "other": [
+        "Eligibility varies by the individual University of Bologna international study grant or award and the relevant annual call.",
+        "Applicants must meet the admission requirements of the selected degree programme and the specific award criteria."
+      ]
+    }
   },
   {
     "id": "bocconi-international-award",
@@ -1153,7 +1622,14 @@
     "deadline_timezone": "Italy local time",
     "source_url": "https://www.unibocconi.it/en/applying-bocconi/fees-and-funding",
     "application_url": "https://www.unibocconi.it/en/applying-bocconi",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters"],
+      "other": [
+        "Eligibility varies by the Bocconi award and degree level; applicants must meet the relevant Bocconi admission requirements.",
+        "For master's admission, international applicants need a valid and recognised first-cycle (bachelor's) qualification suitable for access to a second-cycle programme."
+      ]
+    }
   },
   {
     "id": "scuola-normale-superiore-phd",
@@ -1170,7 +1646,15 @@
     "deadline_timezone": "Italy local time",
     "source_url": "https://www.sns.it/en/admissions",
     "application_url": "https://www.sns.it/en/admissions",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["PhD"],
+      "other": [
+        "Open to Italian and non-Italian students.",
+        "Requires a master's degree or equivalent non-Italian qualification, or an equivalent qualification expected by the stated deadline.",
+        "Specific PhD calls may impose additional research-topic or skills requirements."
+      ]
+    }
   },
   {
     "id": "chinese-government-scholarship",
@@ -1192,7 +1676,14 @@
     "deadline_timezone": "China local time",
     "source_url": "https://www.campuschina.org/",
     "application_url": "https://studyinchina.csc.edu.cn/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Undergraduate", "Masters", "PhD"],
+      "other": [
+        "Eligibility depends on the current Chinese Government Scholarship call, study level, host institution and scholarship type.",
+        "Applicants must meet the applicable university/programme admission requirements and any language requirements in the current call."
+      ]
+    }
   },
   {
     "id": "tsinghua-scholarship-international",
@@ -1213,6 +1704,14 @@
     "deadline_timezone": "China local time",
     "source_url": "https://www.tsinghua.edu.cn/en/",
     "application_url": "https://yz.tsinghua.edu.cn/en/",
-    "last_verified_at": "2026-10-02"
+    "last_verified_at": "2026-10-02",
+    "eligibility_requirements": {
+      "degrees": ["Masters", "PhD"],
+      "other": [
+        "Applicants must meet Tsinghua's international graduate admission requirements.",
+        "Language requirements (HSK/English) are programme-specific; applicants for Chinese-taught master's/doctoral programmes applying for CGS generally need HSK 4 unless an exemption applies.",
+        "Scholarship applicants must satisfy the current Tsinghua/CGS scholarship rules and, where required, obtain pre-admission."
+      ]
+    }
   }
 ]

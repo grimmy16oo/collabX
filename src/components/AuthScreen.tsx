@@ -2,6 +2,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
+  ActivityIndicator,
+  Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -11,7 +13,10 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { FONTS } from "../theme/colors";
+import { useAuth } from "../context/AuthContext";
+import { hasFirebaseConfig } from "../config/firebase";
+import { COLORS, FONTS } from "../theme/colors";
+import { DecorativeBackdrop } from "./DecorativeBackdrop";
 
 type AuthMode = "signIn" | "signUp";
 
@@ -66,22 +71,88 @@ const Field = ({
 export function AuthScreen({ mode }: { mode: AuthMode }) {
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const { login, register, resetPassword } = useAuth();
   const isSignUp = mode === "signUp";
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(true);
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [infoMessage, setInfoMessage] = useState("");
   const title = isSignUp ? "Create Your\nAccount" : "Welcome\nBack";
   const subtitle = isSignUp
     ? "Join a community of learners,\nshare your skills, and grow together."
     : "Sign in to continue your\nscholarship journey.";
 
+  const handleSubmit = async () => {
+    setErrorMessage("");
+    setInfoMessage("");
+
+    if (!email.trim() || !password) {
+      setErrorMessage("Please fill in both email and password.");
+      return;
+    }
+
+    if (isSignUp) {
+      if (!fullName.trim()) {
+        setErrorMessage("Please enter your full name.");
+        return;
+      }
+      if (password.length < 6) {
+        setErrorMessage("Password must be at least 6 characters long.");
+        return;
+      }
+      if (password !== confirmPassword) {
+        setErrorMessage("Passwords do not match.");
+        return;
+      }
+
+      setIsSubmitting(true);
+      const res = await register(fullName.trim(), email.trim(), password);
+      setIsSubmitting(false);
+
+      if (res.success) {
+        router.replace("/home");
+      } else {
+        setErrorMessage(res.error || "Failed to create account with Firebase.");
+      }
+    } else {
+      setIsSubmitting(true);
+      const res = await login(email.trim(), password);
+      setIsSubmitting(false);
+
+      if (res.success) {
+        router.replace("/home");
+      } else {
+        setErrorMessage(res.error || "Failed to sign in with Firebase.");
+      }
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    setErrorMessage("");
+    setInfoMessage("");
+
+    if (!email.trim()) {
+      setErrorMessage("Enter your email address above to receive a password reset link.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    const res = await resetPassword(email.trim());
+    setIsSubmitting(false);
+
+    if (res.success) {
+      setInfoMessage(`Password reset link sent to ${email.trim()}. Please check your email.`);
+    } else {
+      setErrorMessage(res.error || "Could not send password reset email.");
+    }
+  };
+
   return (
-    <View style={{ flex: 1, backgroundColor: "#F9FBF4" }}>
-      <View className="absolute -left-20 -top-20 w-64 h-64 rounded-full bg-[#DCE9D4]/70" />
-      <View className="absolute -right-28 -bottom-28 w-72 h-72 rounded-full bg-[#DCE9D4]/70" />
+    <View style={{ flex: 1, backgroundColor: COLORS.canvasHome }}>
+      <DecorativeBackdrop />
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -96,9 +167,10 @@ export function AuthScreen({ mode }: { mode: AuthMode }) {
           }}
         >
           <View className="px-6 w-full max-w-[460px] self-center">
+            {/* Header Brand */}
             <View className="flex-row items-center self-center mb-7">
-              <View className="w-[58px] h-[58px] rounded-[20px] bg-[#193419] items-center justify-center">
-                <Ionicons name="school" size={30} color="#FFFFFF" />
+              <View className="w-[58px] h-[58px] rounded-[20px] bg-white items-center justify-center shadow-sm">
+                <Image source={require("../../assets/images/logo.png")} className="h-12 w-12" resizeMode="contain" />
               </View>
               <Text
                 className="ml-3 text-[30px] font-bold text-[#17331A]"
@@ -115,12 +187,37 @@ export function AuthScreen({ mode }: { mode: AuthMode }) {
               {title}
             </Text>
             <Text
-              className="text-[17px] leading-6 text-[#71876F] mt-3 mb-7"
+              className="text-[17px] leading-6 text-[#71876F] mt-3 mb-6"
               style={{ fontFamily: FONTS.regular }}
             >
               {subtitle}
             </Text>
 
+            {/* Error Banner */}
+            {errorMessage ? (
+              <View className="bg-[#FDEDEC] border border-[#F5B7B1] rounded-2xl p-4 mb-4">
+                <Text
+                  className="text-[#9A3C2D] text-[13px] leading-5"
+                  style={{ fontFamily: FONTS.medium }}
+                >
+                  {errorMessage}
+                </Text>
+              </View>
+            ) : null}
+
+            {/* Info / Success Banner */}
+            {infoMessage ? (
+              <View className="bg-[#EAFBF0] border border-[#A7F3D0] rounded-2xl p-4 mb-4">
+                <Text
+                  className="text-[#136A38] text-[13px] leading-5"
+                  style={{ fontFamily: FONTS.medium }}
+                >
+                  {infoMessage}
+                </Text>
+              </View>
+            ) : null}
+
+            {/* Input Fields */}
             {isSignUp && (
               <Field
                 icon="person-outline"
@@ -152,29 +249,13 @@ export function AuthScreen({ mode }: { mode: AuthMode }) {
               />
             )}
 
+            {/* Remember Me & Forgot Password */}
             {!isSignUp && (
-              <View className="flex-row justify-between items-center my-2">
+              <View className="flex-row justify-end items-center my-2">
                 <TouchableOpacity
-                  className="flex-row items-center"
-                  onPress={() => setRememberMe((value) => !value)}
-                  accessibilityRole="checkbox"
-                  accessibilityState={{ checked: rememberMe }}
+                  onPress={handleForgotPassword}
+                  accessibilityRole="button"
                 >
-                  <View
-                    className={`w-6 h-6 rounded-md items-center justify-center ${rememberMe ? "bg-[#23451F]" : "border border-[#8EA28A]"}`}
-                  >
-                    {rememberMe && (
-                      <Ionicons name="checkmark" size={18} color="#FFFFFF" />
-                    )}
-                  </View>
-                  <Text
-                    className="ml-2.5 text-[14px] text-[#71876F]"
-                    style={{ fontFamily: FONTS.medium }}
-                  >
-                    Remember me
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity accessibilityRole="button">
                   <Text
                     className="text-[14px] text-[#355126]"
                     style={{ fontFamily: FONTS.semiBold }}
@@ -185,57 +266,36 @@ export function AuthScreen({ mode }: { mode: AuthMode }) {
               </View>
             )}
 
+            {/* Submit Button */}
             <TouchableOpacity
-              onPress={() => router.replace("/home")}
+              onPress={handleSubmit}
+              disabled={isSubmitting}
               activeOpacity={0.85}
-              className="h-[60px] rounded-full bg-[#1E421C] items-center justify-center flex-row mt-4"
+              className={`h-[60px] rounded-full bg-[#1E421C] items-center justify-center flex-row mt-4 ${
+                isSubmitting ? "opacity-75" : ""
+              }`}
               accessibilityRole="button"
               accessibilityLabel={isSignUp ? "Sign up" : "Sign in"}
             >
-              <Text
-                className="text-[17px] text-white font-bold tracking-wide"
-                style={{ fontFamily: FONTS.bold }}
-              >
-                {isSignUp ? "SIGN UP" : "SIGN IN"}
-              </Text>
-              <Ionicons
-                name="arrow-forward"
-                size={23}
-                color="#FFFFFF"
-                className="ml-3"
-              />
-            </TouchableOpacity>
-
-            <View className="flex-row items-center my-6">
-              <View className="h-px flex-1 bg-[#D4E0CF]" />
-              <Text
-                className="mx-5 text-[14px] text-[#71876F]"
-                style={{ fontFamily: FONTS.medium }}
-              >
-                OR
-              </Text>
-              <View className="h-px flex-1 bg-[#D4E0CF]" />
-            </View>
-            <View className="flex-row justify-center gap-5">
-              {[
-                ["logo-google", "#4285F4"],
-                ["logo-apple", "#111111"],
-                ["game-controller-outline", "#5865F2"],
-              ].map(([icon, color]) => (
-                <TouchableOpacity
-                  key={icon}
-                  className="w-14 h-14 rounded-full border border-[#DCE5D6] bg-white/75 items-center justify-center"
-                  accessibilityRole="button"
-                  accessibilityLabel={`Continue with ${icon}`}
-                >
+              {isSubmitting ? (
+                <ActivityIndicator color="#FFFFFF" size="small" />
+              ) : (
+                <>
+                  <Text
+                    className="text-[17px] text-white font-bold tracking-wide"
+                    style={{ fontFamily: FONTS.bold }}
+                  >
+                    {isSignUp ? "CREATE ACCOUNT" : "SIGN IN"}
+                  </Text>
                   <Ionicons
-                    name={icon as keyof typeof Ionicons.glyphMap}
-                    size={25}
-                    color={color}
+                    name="arrow-forward"
+                    size={23}
+                    color="#FFFFFF"
+                    className="ml-3"
                   />
-                </TouchableOpacity>
-              ))}
-            </View>
+                </>
+              )}
+            </TouchableOpacity>
 
             {isSignUp && (
               <Text
@@ -258,6 +318,8 @@ export function AuthScreen({ mode }: { mode: AuthMode }) {
                 </Text>
               </Text>
             )}
+
+            {/* Switch Mode Footer */}
             <View className="flex-row justify-center mt-7">
               <Text
                 className="text-[14px] text-[#71876F]"

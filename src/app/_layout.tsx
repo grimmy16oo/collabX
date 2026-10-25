@@ -13,6 +13,8 @@ import { StatusBar } from "expo-status-bar";
 import { View, ActivityIndicator, StyleSheet } from "react-native";
 import { COLORS } from "../theme/colors";
 
+import { AuthProvider } from "../context/AuthContext";
+
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
     PlusJakartaSans_400Regular,
@@ -32,7 +34,7 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <AuthProvider>
       <StatusBar style="dark" />
       <Stack
         screenOptions={{
@@ -47,17 +49,19 @@ export default function RootLayout() {
         <Stack.Screen name="home/index" options={{ headerShown: false }} />
         <Stack.Screen name="scholarships/index" options={{ headerShown: false }} />
         <Stack.Screen name="scholarships/details" options={{ headerShown: false }} />
+        <Stack.Screen name="eligibility" options={{ headerShown: false }} />
         <Stack.Screen name="tracker" options={{ headerShown: false }} />
         <Stack.Screen name="about" options={{ headerShown: false }} />
+        <Stack.Screen name="contact" options={{ headerShown: false }} />
       </Stack>
-    </>
+    </AuthProvider>
   );
 }
 
 const styles = StyleSheet.create({
   loadingContainer: {
     flex: 1,
-    backgroundColor: "#17331A",
+    backgroundColor: COLORS.primaryDark,
     alignItems: "center",
     justifyContent: "center",
   },

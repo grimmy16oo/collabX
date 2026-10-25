@@ -1,141 +1,173 @@
-# CollabX 🎓
+# CollabX
 
-**CollabX** is a scholarship discovery mobile application built with React Native and Expo (SDK 57). The user interface emphasizes a focused visual design inspired by deep natural tones and modern editorial typography.
+CollabX is a scholarship discovery and application tracking app built with React Native and Expo. Students can browse scholarship listings, save opportunities, track their application stages, and maintain a profile with study preferences.
 
----
+## Features
 
-## 🎨 Visual Design & Theme System
+- Email/password account registration and sign-in, plus password reset through Firebase Authentication.
+- Scholarship search and filtering backed by an Express API and MongoDB.
+- Recommended scholarships filtered using study level, target countries, and fields of study when profile data is available. Recommendations are broad filters, not a guaranteed eligibility or match score.
+- Saved scholarships and an application tracker. Signed-in users sync these records through the API; guests can keep saved IDs in local device storage.
+- Editable student profile: name, headline, degree level, CGPA and scale, nationality, target countries, fields of study, and profile photo.
+- A shared forest-green and sage visual theme, file-based navigation with Expo Router, and a floating bottom navigation bar.
 
-The design system is centered around earthy greens, warm sage-cream canvases, and crisp card surfaces:
+## Tech stack
 
-| Element | Specification / Color | Description |
-| :--- | :--- | :--- |
-| **Home Canvas** | `#F0F2E9` | Warm sage-cream background |
-| **Welcome Canvas** | `#17331A` &rarr; `#132A15` | Deep forest green linear gradient |
-| **Primary Accents** | `#183119` & `#3D6414` | Deep forest green and rich olive green |
-| **Text Highlights** | `#74DE85` & `#3D6414` | Luminous mint italic on dark / olive italic on light |
-| **Typography** | Plus Jakarta Sans | Bold headings (`#152A17`), tracked uppercase subtitles (`#798C76`) |
-| **Card Style** | `#FFFFFF` | 28px rounded corners, subtle drop shadow, `#ECEFE4` borders |
+- Expo SDK 58, React Native 0.88, and TypeScript
+- Expo Router and NativeWind
+- Firebase Authentication
+- Multer for authenticated profile photo uploads to the Express server
+- Express, Mongoose, and MongoDB for the API and persistent user/scholarship records
+- AsyncStorage for local session/profile fallback and guest saved scholarship IDs
 
----
-
-## 📱 Screens & Features
-
-### 1. Welcome (Onboarding) Screen (`src/app/index.tsx`)
-- **Brand Squircle Badge**: White badge at the top-left containing a graduation cap icon and the **CollabX** brandmark.
-- **Hero Display Headline**: *"Unlock Your / Global Future"* with *"Global Future"* rendered in an italic light green accent.
-- **Value Proposition Subtitle**: *"Personalized scholarship matching for every ambitious student."*
-- **Social Proof**:
-  - Overlapping circular student avatars with a distinct border treatment.
-  - Green `10k+` pill badge.
-  - Subtitle: `"TRUSTED BY STUDENTS WORLDWIDE"` accompanied by a 4.9/5 student rating row.
-- **Actions**:
-  - Pure white pill button: `"GET STARTED"` (navigates smoothly to the Home screen).
-  - Translucent outlined button: `"SIGN IN"`.
-
-### 2. Home Screen (`src/app/home/homescreen.tsx`)
-- **Top Greeting Bar**:
-  - User profile avatar for **Alex Johnson** with uppercase tracked `"WELCOME BACK"`.
-  - Pure white circular notification bell button with a red badge pip.
-- **Headline**:
-  - Display text: *"Find your perfect / Scholarship"* with *"Scholarship"* in rich olive italic.
-- **Eligibility Banner**:
-  - Deep forest green (`#183119`) 28px rounded card.
-  - Integrated `"3.8 GPA"` pill badge and `"92% Match Score"` indicator with a right chevron arrow.
-- **Filter Chips**:
-  - Horizontal scrolling pills: `"All Types"` (active olive `#3D6414`), `"Full Funding"`, `"Undergraduate"`, `"Postgraduate"`, and `"STEM & Tech"`.
-- **"Featured for you" Horizontal Carousel**:
-  - 28px rounded white cards with drop shadow and `#ECEFE4` borders.
-  - Institutional monogram badges (`"GC"` for Gates Cambridge, `"RS"` for Rhodes, `"FB"` for Fulbright, `"SS"` for Schwarzman).
-  - Interactive bookmark action, country tag (`UK`, `USA`), funding tag (`FULL FUNDING`), application deadline, and amount (e.g. `$45,000 / year`).
-- **"Active Applications" Section**:
-  - Pure white card featuring the `"Chevening Scholarship"` with a `"Status: Under Review"` amber badge.
-  - Custom SVG circular progress ring component showing **65%** completion.
-- **Floating Bottom Nav**:
-  - Deep forest green (`#183119`) pill navbar fixed at the bottom with safe area padding.
-  - 4 icons: **Home**, **Search**, **Tracker**, and **Profile**.
-  - Olive-green (`#3D6414`) squircle highlight on the active tab.
-
----
-
-## 📂 Project Structure
+## Project layout
 
 ```text
 collabx/
 ├── src/
-│   ├── app/
-│   │   ├── _layout.tsx           # Root layout with Plus Jakarta Sans & Stack routing
-│   │   ├── index.tsx             # Screen 1: Welcome Screen (Dark Forest Gradient)
-│   │   └── home/
-│   │       └── homescreen.tsx    # Screen 2: Home Screen (Warm Sage-Cream)
-│   ├── components/
-│   │   ├── CircularProgress.tsx  # SVG circular progress ring (react-native-svg)
-│   │   └── FloatingBottomNav.tsx # Floating pill bottom navbar with squircle highlight
-│   └── theme/
-│       └── colors.ts             # Centralized design tokens (colors, typography, radii)
-├── assets/                       # Static app assets and icons
-├── app.json                      # Expo configuration
-├── package.json                  # Dependencies & scripts
-└── tsconfig.json                 # TypeScript compiler configuration
+│   ├── app/                    # Onboarding, auth, home, scholarship, tracker, and profile screens
+│   ├── components/             # Shared UI, auth, and navigation components
+│   ├── config/                 # Firebase configuration
+│   ├── context/                # Authentication and user profile state
+│   ├── data/                   # Scholarship API hooks and source JSON dataset
+│   └── theme/                  # Colors and typography
+├── backend/
+│   └── src/
+│       ├── models/             # User, scholarship, and saved scholarship models
+│       ├── routes/             # Authentication, profile, and saved scholarship routes
+│       └── server.js           # Express API and scholarship endpoints
+├── storage.rules               # Firebase Storage rules for profile images
+├── app.json                    # Expo app configuration
+└── package.json                # App and backend convenience scripts
 ```
 
----
+## Requirements
 
-## 🛠️ Tech Stack & Dependencies
+- Node.js and npm
+- A Firebase project with a Web App and Authentication configured
+- A MongoDB database (MongoDB Atlas or a local MongoDB instance)
+- For physical device testing, a phone and development computer reachable on the same network
 
-- **Framework**: [Expo](https://expo.dev/) (SDK 57)
-- **Routing**: [Expo Router](https://docs.expo.dev/router/introduction/) (File-based navigation)
-- **Styling**: NativeWind v4 & Tailwind CSS with CollabX theme tokens
-- **Typography**: `@expo-google-fonts/plus-jakarta-sans` & `expo-font`
-- **Gradients**: `expo-linear-gradient`
-- **SVGs**: `react-native-svg`
-- **Icons**: `@expo/vector-icons` (`Ionicons`)
+## Setup
 
----
+### 1. Install dependencies
 
-## 🚀 Getting Started
+From the project root:
 
-### 1. Install Dependencies
 ```bash
 npm install
+npm run backend:install
 ```
 
-### 2. Start the Development Server
+### 2. Configure Firebase Authentication
+
+Copy `.env.example` to `.env` and fill in the Firebase Web App settings from Firebase Console → Project settings → General. Root `.env` is read by Expo and must remain private; do not commit real credentials.
+
+In Firebase Console, enable **Email/Password** under Authentication → Sign-in method. The native app identifiers are `com.collabx.app` for both iOS and Android. Firebase Firestore stores authenticated profiles in `users/{Firebase UID}`.
+
+Create the default Cloud Firestore database in `collabx-8def0` if one does not exist, then publish the project rules with `npx -y firebase-tools@latest deploy --only firestore:rules,storage --project collabx-8def0`. Authenticated profile documents are stored at `users/{Firebase UID}` and are readable/writable only by that signed-in user. Signed-in feedback is stored in `feedback`; optional screenshots use Firebase Storage. The rules are a prototype and should be reviewed before launch.
+
+The Firebase CLI must be logged in before app registration or rules deployment. Register the iOS app with `npx -y firebase-tools@latest apps:create IOS com.collabx.app --project collabx-8def0 --display-name CollabX`.
+
+Example variable names are listed in `.env.example`:
+
+```env
+# Optional deployed API override. For local development, leave unset.
+# EXPO_PUBLIC_API_URL=https://your-api.example.com
+EXPO_PUBLIC_FIREBASE_API_KEY=...
+EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=...
+EXPO_PUBLIC_FIREBASE_PROJECT_ID=...
+EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=...
+EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=...
+EXPO_PUBLIC_FIREBASE_APP_ID=...
+```
+
+During local Expo development, leave `EXPO_PUBLIC_API_URL` unset. The app reads the current Expo development host and connects to the API on port 4000, so changing Wi-Fi does not require editing source or `.env`. Set `EXPO_PUBLIC_API_URL` only when using a deployed backend. Restart Expo after changing environment variables.
+
+### 3. Configure the backend
+
+Copy `backend/.env.example` to `backend/.env` and set a MongoDB connection string and a long, private JWT secret:
+
+```env
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/collabx?retryWrites=true&w=majority
+PORT=4000
+JWT_SECRET=<long-random-secret>
+FIREBASE_PROJECT_ID=<same-project-id-as-the-app>
+```
+
+For MongoDB Atlas, create a database user and allow your development machine's IP in Network Access. Keep `backend/.env` private.
+
+Profile photos and feedback screenshots are stored in Cloudinary; MongoDB stores their secure URLs and Cloudinary public IDs. Create a Cloudinary account, copy the cloud name, API key, and API secret from its dashboard into `backend/.env` using the `CLOUDINARY_*` names in `backend/.env.example`, then restart the API. Keep the API secret only in the backend environment. New image uploads return a setup error until these values are configured.
+
+### 4. Import scholarship records
+
+The source dataset is `src/data/scholarships.json`. Import its records into the MongoDB database configured by `MONGODB_URI`:
+
 ```bash
-npx expo start
+npm run scholarships:import
 ```
-*(If port 8081 is in use, start on port 8082 with `npx expo start --port 8082`)*
 
-### 3. Open the App
-- **Web Browser**: Press `w` in the terminal or navigate to `http://localhost:8082`
-- **iOS Simulator**: Press `i` in the terminal
-- **Android Emulator**: Press `a` in the terminal
-- **Physical Device**: Scan the terminal QR code using the **Expo Go** app (iOS Camera or Android Expo Go)
+The import script upserts by each record's source `id`, so it can be run again to refresh the collection.
 
----
+## Run locally
 
-## 🧪 Verification & Type Safety
+Start the API in one terminal:
 
-Run the TypeScript compiler to ensure strict typing:
+```bash
+npm run backend:dev
+```
+
+The API listens on port 4000 by default. Check `http://<computer-address>:4000/api/health`; HTTP 200 and `"database":"connected"` mean both API and MongoDB are ready. HTTP 503 means the API is up but MongoDB is disconnected.
+
+Start Expo in another terminal:
+
+```bash
+npx expo start --lan
+```
+
+Use the terminal shortcuts to open web or an emulator, or scan the QR code with Expo Go. Keep the phone and development computer on the same reachable network and allow the Expo and backend ports through the computer firewall. The API address follows Expo's current host automatically. Some university and public Wi-Fi networks block device-to-device connections; use a trusted VPN or a deployed backend if client isolation is enabled. Expo's tunnel option tunnels the Expo bundle, not this Express API.
+
+## API overview
+
+Base path: `/api`
+
+| Method | Route | Purpose |
+| --- | --- | --- |
+| `GET` | `/health` | API and MongoDB connection status |
+| `GET` | `/scholarships` | Search/filter scholarships with `q`, `country`, `level`, `field`, and `eligibleCountry` query parameters |
+| `GET` | `/scholarships/:id` | Retrieve a scholarship by its source dataset ID |
+| `GET` | `/scholarships/recommended` | Return a filtered scholarship list, optionally using profile data and query filters |
+| `POST` | `/auth/firebase-sync` | Sync a Firebase account with the API user record |
+| `GET` / `PUT` | `/users/profile` | Read or update the signed-in user's profile |
+| `GET` | `/saved-scholarships` | List the signed-in user's saved scholarships |
+| `POST` | `/saved-scholarships/toggle` | Save or unsave a scholarship |
+| `PATCH` | `/saved-scholarships/:scholarshipId` | Update saved scholarship tracking details |
+| `DELETE` | `/saved-scholarships/:scholarshipId` | Remove a saved scholarship |
+
+Profile updates and Firebase account sync use the signed-in Firebase user's ID token. The backend verifies it with Firebase Admin and resolves its UID to the existing MongoDB user. Set `FIREBASE_PROJECT_ID` in `backend/.env` to the same project ID as the app. Existing API-issued bearer tokens remain supported for scholarship and tracker requests.
+
+## Profile photos
+
+The profile screen uses Expo Image Picker to send the selected photo as multipart form data to the authenticated `PUT /api/users/profile` endpoint. The API stores JPG/JPEG, PNG, or WebP files up to 5 MB under `backend/uploads/avatars/<user-id>/`, then saves the public `/uploads/...` URL in the MongoDB user profile's `photoURL` field. Express serves these files from `/uploads`. The phone must be able to reach the backend on the same network or through the configured deployed API. Uploaded files are ignored by Git.
+
+## Development checks
+
+Run the TypeScript compiler:
+
 ```bash
 npx tsc --noEmit
 ```
-To test the production asset bundling across all platforms:
+
+Clear Expo's cache if changes to configuration or environment variables are not picked up:
+
 ```bash
-npx expo export
+npx expo start -c
 ```
 
-## Scholarships API (MongoDB Atlas)
+## Current limitations
 
-`src/data/scholarships.json` is the source dataset (59 records). The Express API stores it in the database selected by `MONGO_URI`, in the `scholarships` collection. Each record's source `id` is unique; imports upsert by that id.
-
-1. Create an Atlas database user and allow your development machine's public IP in Atlas Network Access.
-2. Copy `backend/.env.example` to `backend/.env` and set `MONGO_URI`. Keep this file private.
-3. From the project root run `npm run backend:install` and `npm run scholarships:import`.
-4. Start the API with `npm run backend:dev` (or `npm run backend:start`). It listens on `0.0.0.0:4000`. Check `http://localhost:4000/api/health`.
-5. Set `EXPO_PUBLIC_API_URL` in the root `.env` to `http://<computer-LAN-IP>:4000`. The current Wi-Fi adapter address detected for this computer is `192.168.10.30`. The phone and computer must share a network and the computer firewall must allow inbound TCP port 4000.
-6. Start Expo with `npx expo start`; reload the app after changing `.env`.
-
-API routes: `GET /api/scholarships` returns `{ data, count }`; `GET /api/scholarships/:id` looks up a source record id. List filters are `q`, `country`, `level`, `field`, and `eligibleCountry`.
-
-Saved scholarships are local to the device and reference API record ids. The dataset does not include applicant profile data, eligibility rules, match scores, or application progress, so the UI does not claim a match or invent tracked applications.
+- Scholarship details include a preliminary eligibility check for degree, field, nationality, CGPA, and language where structured requirements and profile data are available. Missing criteria are shown as unknown; users should confirm rules with the official provider. Recommendations remain broad field/country/degree filters.
+- Saved scholarship IDs have a local guest fallback. Persistent tracker status and server profile data require a working API, MongoDB connection, and signed-in account.
+- Firebase account sign-in can work while the API is offline, but profile updates then use the local fallback and will not sync to MongoDB until backend connectivity is restored.
+- Profile image upload requires the backend to be reachable and writable storage on the machine running the API. For deployment, use persistent file storage or an object-storage service because local uploaded files may not survive ephemeral hosting.
+- Configure and verify Firebase OAuth clients, MongoDB access, and Storage rules for your own development and production environments.

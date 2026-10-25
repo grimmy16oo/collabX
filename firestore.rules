@@ -1,0 +1,127 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Assumed data model:
+    // users/{Firebase UID}: uid, email, fullName, authProvider, profile map,
+    // createdAt, updatedAt. Email and identity fields are private to the owner.
+    // Profile fields are limited to the shape validated below.
+    // feedback/{feedback ID}: id, userId, rating, topic, message, replyEmail,
+    // optional attachmentPath, and createdAt. Clients can create but cannot read
+    // or modify feedback; trusted administrative tooling can review submissions.
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function signedInAs(userId) {
+      return isOwner(userId);
+    }
+
+    function uidUnchanged(userId) {
+      return request.resource.data.uid == userId;
+    }
+
+    function uidNotModified() {
+      return request.resource.data.uid == resource.data.uid;
+    }
+
+    function validProfile(profile) {
+      return profile is map
+        && profile.keys().hasOnly([
+          'photoURL', 'avatarUrl', 'headline', 'degreeLevel', 'cgpa',
+          'cgpaScale', 'nationality', 'targetCountries', 'fieldsOfStudy',
+          'languages', 'resumes'
+        ])
+        && (!('photoURL' in profile) || (profile.photoURL is string && profile.photoURL.size() <= 2048))
+        && (!('avatarUrl' in profile) || (profile.avatarUrl is string && profile.avatarUrl.size() <= 2048))
+        && (!('headline' in profile) || (profile.headline is string && profile.headline.size() <= 300))
+        && (!('degreeLevel' in profile) || (profile.degreeLevel is string && profile.degreeLevel.size() <= 100))
+        && (!('cgpa' in profile) || (profile.cgpa == null || (profile.cgpa is number && profile.cgpa >= 0 && profile.cgpa <= 100)))
+        && (!('cgpaScale' in profile) || (profile.cgpaScale == null || (profile.cgpaScale is number && profile.cgpaScale > 0 && profile.cgpaScale <= 100)))
+        && (!('nationality' in profile) || (profile.nationality is string && profile.nationality.size() <= 100))
+        && (!('targetCountries' in profile) || (profile.targetCountries is list && profile.targetCountries.size() <= 50))
+        && (!('fieldsOfStudy' in profile) || (profile.fieldsOfStudy is list && profile.fieldsOfStudy.size() <= 50))
+        && (!('languages' in profile) || (profile.languages is list && profile.languages.size() <= 50))
+        && (!('resumes' in profile) || (profile.resumes is list && profile.resumes.size() <= 20));
+    }
+
+    function validUser(data, userId) {
+      return data.keys().hasOnly([
+          'uid', 'email', 'fullName', 'authProvider', 'profile', 'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasAll([
+          'uid', 'email', 'fullName', 'authProvider', 'profile', 'createdAt', 'updatedAt'
+        ])
+        && data.uid == userId
+        && data.email is string
+        && data.email == request.auth.token.email
+        && data.fullName is string
+        && data.fullName.size() <= 100
+        && data.authProvider in ['password', 'google.com', 'apple.com']
+        && validProfile(data.profile)
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp
+        && data.updatedAt == request.time;
+    }
+
+    function validFeedback(data, feedbackId, userId) {
+      return data.keys().hasOnly([
+          'id', 'userId', 'rating', 'topic', 'message', 'replyEmail',
+          'attachmentPath', 'createdAt'
+        ])
+        && data.keys().hasAll([
+          'id', 'userId', 'rating', 'topic', 'message', 'replyEmail', 'createdAt'
+        ])
+        && data.id == feedbackId
+        && data.userId == userId
+        && data.rating is int
+        && data.rating >= 1
+        && data.rating <= 5
+        && data.topic in [
+          'Eligibility match', 'Scholarships', 'Bug report',
+          'Feature idea', 'Account', 'Other'
+        ]
+        && data.message is string
+        && data.message.size() > 0
+        && data.message.size() <= 500
+        && data.replyEmail is string
+        && data.replyEmail.size() <= 254
+        && (data.replyEmail == ''
+          || data.replyEmail.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$'))
+        && (!('attachmentPath' in data)
+          || data.attachmentPath == 'feedback/' + userId + '/' + feedbackId)
+        && data.createdAt is timestamp
+        && data.createdAt == request.time;
+    }
+
+    match /users/{userId} {
+      allow get: if signedInAs(userId);
+      allow list: if false;
+      allow create: if signedInAs(userId) && validUser(request.resource.data, userId)
+        && uidUnchanged(userId)
+        && request.resource.data.createdAt == request.time;
+      allow update: if signedInAs(userId)
+        && validUser(request.resource.data, userId)
+        && uidNotModified()
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.email == resource.data.email
+        && request.resource.data.authProvider == resource.data.authProvider;
+      allow delete: if signedInAs(userId);
+    }
+
+    // Feedback can be submitted by its signed-in author. Client reads and edits are blocked.
+    match /feedback/{feedbackId} {
+      allow create: if isAuthenticated()
+        && validFeedback(request.resource.data, feedbackId, request.auth.uid);
+      allow read, update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

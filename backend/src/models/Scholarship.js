@@ -1,4 +1,37 @@
-const mongoose = require('mongoose');
-const schema = new mongoose.Schema({ id:{type:String,required:true,unique:true,index:true}, title:{type:String,required:true}, provider_name:{type:String,required:true}, country:{type:String,required:true}, study_levels:{type:[String],default:[]}, fields_of_study:{type:[String],default:[]}, eligible_countries:{type:[String],default:[]}, award_amount:{type:String,required:true}, currency:{type:String,default:''}, benefits:{type:[String],default:[]}, deadline:{type:String,required:true}, deadline_timezone:{type:String,default:''}, source_url:{type:String,required:true}, application_url:{type:String,required:true}, last_verified_at:{type:String,default:''} }, {timestamps:true,collection:'scholarships'});
-schema.index({title:'text',provider_name:'text',country:'text',fields_of_study:'text'});
-module.exports=mongoose.model('Scholarship',schema);
+const mongoose = require("mongoose");
+const schema = new mongoose.Schema(
+  {
+    id: { type: String, required: true, unique: true, index: true },
+    title: { type: String, required: true },
+    provider_name: { type: String, required: true },
+    country: { type: String, required: true },
+    study_levels: { type: [String], default: [] },
+    fields_of_study: { type: [String], default: [] },
+    eligible_countries: { type: [String], default: [] },
+    eligibility_requirements: {
+      minimum_cgpa: { type: Number, min: 0 },
+      cgpa_scale: { type: Number, min: 0.01 },
+      degrees: { type: [String], default: [] },
+      fields: { type: [String], default: [] },
+      languages: { type: [String], default: [] },
+      nationalities: { type: [String], default: [] },
+      other: { type: [String], default: [] },
+    },
+    award_amount: { type: String, required: true },
+    currency: { type: String, default: "" },
+    benefits: { type: [String], default: [] },
+    deadline: { type: String, required: true },
+    deadline_timezone: { type: String, default: "" },
+    source_url: { type: String, required: true },
+    application_url: { type: String, required: true },
+    last_verified_at: { type: String, default: "" },
+  },
+  { timestamps: true, collection: "scholarships" },
+);
+schema.index({
+  title: "text",
+  provider_name: "text",
+  country: "text",
+  fields_of_study: "text",
+});
+module.exports = mongoose.model("Scholarship", schema);
